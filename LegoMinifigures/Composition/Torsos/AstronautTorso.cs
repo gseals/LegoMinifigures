@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace LegoMinifigures.Composition.Torsos
-{
-    class AstronautTorso
+{   // the colon acts as the extends keyword from React; these items exist in 
+    // TorsoBase so we reference it; the colon creates an "Is A" relationship
+    class AstronautTorso : TorsoBase
     {
         public int NumberOfArms { get; set; }
-        public bool ChiseledAbs { get; set; }
-        public bool Shirted { get; set; }
-        public HandType HandType { get; set; }
-
-        public void Flex()
+        // override says that the base class indicates that I have to have something that looks like this
+        public override void Flex()
         {
             if(ChiseledAbs && !Shirted)
             {
@@ -27,14 +25,12 @@ namespace LegoMinifigures.Composition.Torsos
             }
         }
 
-    }
-    enum HandType
-    {
-        Human,
-        Robot,
-        Baby,
-        Tentacles,
-        CanadaArm,
-        XBuster
+        public override void Breathe()
+        {
+            base.Breathe();
+
+            Console.WriteLine("Exhale, Inhale..");
+        }
+
     }
 }

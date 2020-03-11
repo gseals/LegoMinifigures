@@ -9,6 +9,10 @@ namespace LegoMinifigures
 {
     class Astronaut
     {
+        private string v1;
+        private string v2;
+        private DadBodTorso dtorso;
+
         // Public Property
         public Location Location { get; set; }
         // Expression Bodied Property (always readonly)
@@ -33,6 +37,15 @@ namespace LegoMinifigures
 
             Head = head;
             Torso = torso;
+            Legs = legs;
+        }
+
+        public Astronaut(string v1, string v2, ZoeHead head, DadBodTorso dtorso, AstronautLegs legs)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            Head = head;
+            this.dtorso = dtorso;
             Legs = legs;
         }
 

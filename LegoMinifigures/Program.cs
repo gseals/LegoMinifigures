@@ -2,6 +2,7 @@
 using LegoMinifigures.Composition.Legs;
 using LegoMinifigures.Composition.Torsos;
 using System;
+using System.Collections.Generic;
 
 namespace LegoMinifigures
 {
@@ -24,16 +25,25 @@ namespace LegoMinifigures
                 Shoes = ShoeType.FlipFlops
             };
 
-            var torso = new AstronautTorso
+            var dtorso = new DadBodTorso
             {
                 HandType = HandType.Baby,
                 ChiseledAbs = true,
-                NumberOfArms = 3,
                 Shirted = true
             };
 
-            var astronaut = new Astronaut("Space Person", "Janitor", head, torso, legs);
-            var astronaut2 = new Astronaut("Space Lady", "Janitor", head, torso, legs);
+            var atorso = new AstronautTorso
+            {
+                HandType = HandType.Baby,
+                ChiseledAbs = true,
+                Shirted = true
+            };
+
+            atorso.Breathe();
+            dtorso.Breathe();
+
+            var astronaut = new Astronaut("Space Person", "Janitor", head, atorso, legs);
+            var astronaut2 = new Astronaut("Space Lady", "Janitor", head, dtorso, legs);
 
             astronaut.DoYourJob(100);
 
@@ -50,6 +60,18 @@ namespace LegoMinifigures
             {
                 Friendly = false,
             };
+
+
+            var torsos = new List<TorsoBase>();
+            torsos.Add(dtorso);
+            torsos.Add(atorso);
+
+            foreach (var torso in torsos)
+            {
+                torso.Breathe();
+                torso.Flex();
+            }
+
         }
     }
 }
